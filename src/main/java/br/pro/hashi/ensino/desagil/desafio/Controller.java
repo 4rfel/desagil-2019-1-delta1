@@ -3,6 +3,7 @@ package br.pro.hashi.ensino.desagil.desafio;
 import br.pro.hashi.ensino.desagil.desafio.model.CpuPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.HumanPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
+import br.pro.hashi.ensino.desagil.desafio.model.Target;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,6 +68,10 @@ public class Controller implements KeyListener, ActionListener {
         CpuPlayer cpuPlayer = model.getCpuPlayer();
 
         cpuPlayer.move();
+
+        Target target = model.getTarget();
+
+        target.move();
 
         view.repaint();
     }
