@@ -35,8 +35,8 @@ public class View extends JPanel {
                 model.getHumanPlayer1(), getImage("human-player.png"),
                 model.getCpuPlayer(), getImage("cpu-player.png"),
                 model.getPortal0(), getImage("cpu-player.png"),
-                model.getPortal1(), getImage("cpu-player.png")
-
+                model.getPortal1(), getImage("cpu-player.png"),
+                model.getCoin1(), getImage("target.png")
         );
 
         Board board = model.getBoard();
@@ -83,6 +83,9 @@ public class View extends JPanel {
                 g.drawString("Computador Ganhou", 10, 70);
             }
         }
+        g.drawString("Coins Player 1:"+model.getHumanPlayer().getCoins(), 10, 80);
+        g.drawString("Coins Player 2:"+model.getHumanPlayer1().getCoins(), 10, 90);
+
 
         for (Map.Entry<Element, Image> entry : elementsToImages.entrySet()) {
             Element element = entry.getKey();

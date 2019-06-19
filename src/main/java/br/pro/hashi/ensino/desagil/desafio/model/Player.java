@@ -30,4 +30,8 @@ public abstract class Player extends Element {
         this.coins++;
     }
 
+    public int getCoins(){
+        return  this.coins;
+    }
+
 }

@@ -10,7 +10,7 @@ public class Model {
     private final CpuPlayer cpuPlayer;
     private final Portal portal0;
     private final Portal portal1;
-    private final Element coin1;
+    private final Coin coin1;
 
     private Player winner;
 
@@ -29,7 +29,7 @@ public class Model {
 
         portal1 = new Portal(2,10, 1000);
 
-        coin1 = new Element( 0, 4);
+        coin1 = new Coin( 0, 4);
 
         this.winner = null;
     }
@@ -70,7 +70,7 @@ public class Model {
         return portal1;
     }
 
-    public Element getCoin1(){
+    public Coin getCoin1(){
         return coin1;
     }
 }

@@ -101,8 +101,15 @@ public class Controller implements KeyListener, ActionListener {
         portal0.cd();
         portal1.cd();
 
-
-
+        Coin coin1 = model.getCoin1();
+        if(!coin1.getCollected() && humanPlayer.getRow()==coin1.getRow() && humanPlayer.getCol()==coin1.getCol()){
+            coin1.collect();
+            humanPlayer.addCoin();
+        }
+        if(!coin1.getCollected() && humanPlayer1.getRow()==coin1.getRow() && humanPlayer1.getCol()==coin1.getCol()){
+            coin1.collect();
+            humanPlayer1.addCoin();
+        }
         view.repaint();
     }
 
@@ -130,6 +137,8 @@ public class Controller implements KeyListener, ActionListener {
         if (target.getCol() == cpuPlayer.getCol() && target.getRow() == cpuPlayer.getRow()) {
             model.setWinner(cpuPlayer);
         }
+
+
 
         view.repaint();
     }
