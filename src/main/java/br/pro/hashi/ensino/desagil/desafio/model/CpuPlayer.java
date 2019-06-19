@@ -4,14 +4,14 @@ import java.util.Stack;
 
 public class CpuPlayer extends Player {
     private boolean[][] visited;
-    private int numRows;
-    private int numCols;
+    private final int numRows;
+    private final int numCols;
 
     private Stack<Node> stack;
 
 
-    CpuPlayer(int row, int col, Board board) {
-        super(row, col, board);
+    CpuPlayer(int row, int col, Board board, int id) {
+        super(row, col, board, id);
 
         numRows = board.getNumRows();
         numCols = board.getNumCols();

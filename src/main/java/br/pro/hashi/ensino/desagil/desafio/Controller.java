@@ -33,22 +33,48 @@ public class Controller implements KeyListener, ActionListener {
     public void keyPressed(KeyEvent event) {
         HumanPlayer humanPlayer = model.getHumanPlayer();
 
+        HumanPlayer humanPlayer1 = model.getHumanPlayer1();
+
+        Target target = model.getTarget();
         // Para agir de acordo com a tecla que foi pressionada, comparamos o key code do evento com as
         // constantes disponíveis na classe KeyEvent. Uma lista dessas constantes pode ser vista em
         // https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/event/KeyEvent.html.
-        switch (event.getKeyCode()) {
-            case KeyEvent.VK_UP:
-                humanPlayer.moveUp();
-                break;
-            case KeyEvent.VK_RIGHT:
-                humanPlayer.moveRight();
-                break;
-            case KeyEvent.VK_DOWN:
-                humanPlayer.moveDown();
-                break;
-            case KeyEvent.VK_LEFT:
-                humanPlayer.moveLeft();
-                break;
+        if (model.getWinner() == null) {
+            switch (event.getKeyCode()) {
+                case KeyEvent.VK_W:
+                    humanPlayer.moveUp();
+                    break;
+                case KeyEvent.VK_D:
+                    humanPlayer.moveRight();
+                    break;
+                case KeyEvent.VK_S:
+                    humanPlayer.moveDown();
+                    break;
+                case KeyEvent.VK_A:
+                    humanPlayer.moveLeft();
+                    break;
+
+                case KeyEvent.VK_UP:
+                    humanPlayer1.moveUp();
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    humanPlayer1.moveRight();
+                    break;
+                case KeyEvent.VK_DOWN:
+                    humanPlayer1.moveDown();
+                    break;
+                case KeyEvent.VK_LEFT:
+                    humanPlayer1.moveLeft();
+                    break;
+            }
+        }
+
+        if (target.getRow() == humanPlayer.getRow() && target.getCol() == humanPlayer.getCol()) {
+            model.setWinner(humanPlayer);
+        }
+
+        if (target.getRow() == humanPlayer1.getRow() && target.getCol() == humanPlayer1.getCol()) {
+            model.setWinner(humanPlayer1);
         }
 
         view.repaint();
@@ -67,11 +93,17 @@ public class Controller implements KeyListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         CpuPlayer cpuPlayer = model.getCpuPlayer();
 
-        cpuPlayer.move();
-
         Target target = model.getTarget();
 
-        target.move();
+        if (model.getWinner() == null) {
+            cpuPlayer.move();
+
+            target.move();
+        }
+
+        if (target.getCol() == cpuPlayer.getCol() && target.getRow() == cpuPlayer.getRow()) {
+            model.setWinner(cpuPlayer);
+        }
 
         view.repaint();
     }

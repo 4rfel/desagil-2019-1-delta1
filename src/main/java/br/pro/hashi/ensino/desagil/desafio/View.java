@@ -3,6 +3,7 @@ package br.pro.hashi.ensino.desagil.desafio;
 import br.pro.hashi.ensino.desagil.desafio.model.Board;
 import br.pro.hashi.ensino.desagil.desafio.model.Element;
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
+import br.pro.hashi.ensino.desagil.desafio.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +32,7 @@ public class View extends JPanel {
         elementsToImages = Map.of(
                 model.getTarget(), getImage("target.png"),
                 model.getHumanPlayer(), getImage("human-player.png"),
+                model.getHumanPlayer1(), getImage("human-player.png"),
                 model.getCpuPlayer(), getImage("cpu-player.png")
         );
 
@@ -62,6 +64,20 @@ public class View extends JPanel {
                 }
 
                 g.fillRect(j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            }
+        }
+
+        g.setColor(Color.magenta);
+        Player winner = model.getWinner();
+        if (winner != null) {
+            if (winner.getId() == 0) {
+                g.drawString("Player 1 Ganhou", 10, 70);
+            }
+            if (winner.getId() == 1) {
+                g.drawString("Player 2 Ganhou", 10, 70);
+            }
+            if (winner.getId() == 2) {
+                g.drawString("Computador Ganhou", 10, 70);
             }
         }
 
