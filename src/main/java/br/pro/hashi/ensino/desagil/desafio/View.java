@@ -33,7 +33,10 @@ public class View extends JPanel {
                 model.getTarget(), getImage("target.png"),
                 model.getHumanPlayer(), getImage("human-player.png"),
                 model.getHumanPlayer1(), getImage("human-player.png"),
-                model.getCpuPlayer(), getImage("cpu-player.png")
+                model.getCpuPlayer(), getImage("cpu-player.png"),
+                model.getPortal0(), getImage("cpu-player.png"),
+                model.getPortal1(), getImage("cpu-player.png")
+
         );
 
         Board board = model.getBoard();

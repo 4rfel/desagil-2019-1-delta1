@@ -8,6 +8,8 @@ public class Model {
     private final HumanPlayer humanPlayer;
     private final HumanPlayer humanPlayer1;
     private final CpuPlayer cpuPlayer;
+    private final Portal portal0;
+    private final Portal portal1;
 
     private Player winner;
 
@@ -22,16 +24,16 @@ public class Model {
 
         cpuPlayer = new CpuPlayer(8, 18, board, 2);
 
+        portal0 = new Portal(0,5, 1000);
+
+        portal1 = new Portal(2,10, 1000);
+
         this.winner = null;
     }
 
-    public Player getWinner() {
-        return this.winner;
-    }
+    public Player getWinner() { return this.winner; }
 
-    public void setWinner(Player winner) {
-        this.winner = winner;
-    }
+    public void setWinner(Player winner) { this.winner = winner; }
 
     public Board getBoard() {
         return board;
@@ -52,4 +54,8 @@ public class Model {
     public CpuPlayer getCpuPlayer() {
         return cpuPlayer;
     }
+
+    public Portal getPortal0(){ return portal0; }
+
+    public Portal getPortal1(){ return portal1; }
 }

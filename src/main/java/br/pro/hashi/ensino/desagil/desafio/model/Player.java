@@ -18,4 +18,10 @@ public abstract class Player extends Element {
     public int getId() {
         return this.id;
     }
+
+    public void teleport(int newrow, int newcol){
+        this.row = newrow;
+        this.col = newcol;
+    }
+
 }

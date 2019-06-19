@@ -1,9 +1,6 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
-import br.pro.hashi.ensino.desagil.desafio.model.CpuPlayer;
-import br.pro.hashi.ensino.desagil.desafio.model.HumanPlayer;
-import br.pro.hashi.ensino.desagil.desafio.model.Model;
-import br.pro.hashi.ensino.desagil.desafio.model.Target;
+import br.pro.hashi.ensino.desagil.desafio.model.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -76,6 +73,33 @@ public class Controller implements KeyListener, ActionListener {
         if (target.getRow() == humanPlayer1.getRow() && target.getCol() == humanPlayer1.getCol()) {
             model.setWinner(humanPlayer1);
         }
+
+        Portal portal0 = model.getPortal0();
+        Portal portal1 = model.getPortal0();
+
+        if(humanPlayer.getCol()==portal0.getCol() && humanPlayer.getRow()==portal0.getRow()){
+            humanPlayer.teleport(portal1.getRow(), portal1.getCol());
+            portal0.use();
+            portal1.use();
+        }
+        if(humanPlayer.getCol()==portal1.getCol() && humanPlayer.getRow()==portal1.getRow()){
+            humanPlayer.teleport(portal0.getRow(), portal0.getCol());
+            portal0.use();
+            portal1.use();
+        }
+
+        if(humanPlayer1.getCol()==portal0.getCol() && humanPlayer1.getRow()==portal0.getRow()){
+            humanPlayer1.teleport(portal1.getRow(), portal1.getCol());
+            portal0.use();
+            portal1.use();
+        }
+        if(humanPlayer1.getCol()==portal1.getCol() && humanPlayer1.getRow()==portal1.getRow()){
+            humanPlayer1.teleport(portal0.getRow(), portal0.getCol());
+            portal0.use();
+            portal1.use();
+        }
+        portal0.cd();
+        portal1.cd();
 
         view.repaint();
     }
