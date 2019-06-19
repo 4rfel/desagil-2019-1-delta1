@@ -22,4 +22,8 @@ public class Portal extends Element {
             this.usable = true;
         }
     }
+
+    public boolean getUsable(){
+        return this.usable;
+    }
 }

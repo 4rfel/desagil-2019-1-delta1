@@ -75,31 +75,33 @@ public class Controller implements KeyListener, ActionListener {
         }
 
         Portal portal0 = model.getPortal0();
-        Portal portal1 = model.getPortal0();
+        Portal portal1 = model.getPortal1();
 
-        if(humanPlayer.getCol()==portal0.getCol() && humanPlayer.getRow()==portal0.getRow()){
+        if(portal0.getUsable() && humanPlayer.getCol()==portal0.getCol() && humanPlayer.getRow()==portal0.getRow()){
             humanPlayer.teleport(portal1.getRow(), portal1.getCol());
             portal0.use();
             portal1.use();
         }
-        if(humanPlayer.getCol()==portal1.getCol() && humanPlayer.getRow()==portal1.getRow()){
+        if(portal1.getUsable() && humanPlayer.getCol()==portal1.getCol() && humanPlayer.getRow()==portal1.getRow()){
             humanPlayer.teleport(portal0.getRow(), portal0.getCol());
             portal0.use();
             portal1.use();
         }
 
-        if(humanPlayer1.getCol()==portal0.getCol() && humanPlayer1.getRow()==portal0.getRow()){
+        if(portal0.getUsable() && humanPlayer1.getCol()==portal0.getCol() && humanPlayer1.getRow()==portal0.getRow()){
             humanPlayer1.teleport(portal1.getRow(), portal1.getCol());
             portal0.use();
             portal1.use();
         }
-        if(humanPlayer1.getCol()==portal1.getCol() && humanPlayer1.getRow()==portal1.getRow()){
+        if(portal1.getUsable() && humanPlayer1.getCol()==portal1.getCol() && humanPlayer1.getRow()==portal1.getRow()){
             humanPlayer1.teleport(portal0.getRow(), portal0.getCol());
             portal0.use();
             portal1.use();
         }
         portal0.cd();
         portal1.cd();
+
+
 
         view.repaint();
     }

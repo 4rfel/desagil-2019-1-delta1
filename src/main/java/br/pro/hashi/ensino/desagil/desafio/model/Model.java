@@ -10,6 +10,7 @@ public class Model {
     private final CpuPlayer cpuPlayer;
     private final Portal portal0;
     private final Portal portal1;
+    private final Element coin1;
 
     private Player winner;
 
@@ -28,12 +29,18 @@ public class Model {
 
         portal1 = new Portal(2,10, 1000);
 
+        coin1 = new Element( 0, 4);
+
         this.winner = null;
     }
 
-    public Player getWinner() { return this.winner; }
+    public Player getWinner() {
+        return this.winner;
+    }
 
-    public void setWinner(Player winner) { this.winner = winner; }
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
 
     public Board getBoard() {
         return board;
@@ -55,7 +62,15 @@ public class Model {
         return cpuPlayer;
     }
 
-    public Portal getPortal0(){ return portal0; }
+    public Portal getPortal0(){
+        return portal0;
+    }
 
-    public Portal getPortal1(){ return portal1; }
+    public Portal getPortal1(){
+        return portal1;
+    }
+
+    public Element getCoin1(){
+        return coin1;
+    }
 }
